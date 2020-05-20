@@ -1,5 +1,4 @@
 const store = {
-	hello: "",
 	search: {
 		query: "",
 		filter: "",

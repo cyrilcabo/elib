@@ -4,14 +4,6 @@ import store from '../store';
 
 import {createWrapper} from 'next-redux-wrapper';
 
-const helloReducer = (state = store.hello, action) => {
-	switch (action.type) {
-		case "HELLO":
-			return "Hello world";
-		default: return state;
-	}
-}
-
 const searchReducer = (state = store.search, action) => {
 	switch (action.type) {
 		case "SEARCH_PENDING":
@@ -52,7 +44,6 @@ const currentDocumentReducer = (state = store.currentDocument, action) => {
 }
 
 const reducers = combineReducers({
-	hello: helloReducer,
 	search: searchReducer,
 	currentDocument: currentDocumentReducer
 });
