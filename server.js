@@ -1,21 +1,28 @@
-const express = require('express');
+//SCRAPING UTILS
 const fetch = require('isomorphic-unfetch');
 const cheerio = require('cheerio');
 const FormData = require('form-data');
+
+//CORE UTILS
+const express = require('express');
+const next = require('next');
+const dev = process.env.NODE_ENV !== "production";
+const nextApp = next({dev: dev});
+const handler = nextApp.getRequestHandler();
 
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
 
-const formdata = new FormData()
-
-//GALE AUTH DETAILS
-formdata.append('userGroupName', 'phevsu');
-formdata.append('password', 'wonderful');
-formdata.append('prodId', 'EAIM');
-
 //CONNECT TO GALE DATABASE
 const connect = async () => {
+	const formdata = new FormData()
+
+	//GALE AUTH DETAILS
+	formdata.append('userGroupName', 'phevsu');
+	formdata.append('password', 'wonderful');
+	formdata.append('prodId', 'EAIM');
+	
 	return await fetch('https://galeapps.gale.com/apps/auth', {method: 'POST', body: formdata}).then((data) => {
 		return data.headers.get('set-cookie');
 	});
@@ -36,8 +43,25 @@ app.use(async(req, res, next) => {
 });
 
 //SEARCH GALE DATABASE
-const sampleSearch = async (search, filter) => {
+const galeSearch = async (search, rawFilter) => {
 	console.log('searching...');
+	
+	const setFilter = (param) => {
+		switch (param) {
+			case "Books":
+				return "T001";
+			case "Journals":
+				return "T002";
+			case "Magazines":
+				return "T003";
+			case "News":
+				return "T004";
+			default: return "T002";
+		}
+	}
+	
+	const filter = setFilter(rawFilter);
+	
 	return await fetch(`https://go.gale.com/ps/searchWithin.do?limiterFieldValues%5BDA%5D=&limiterTypes%5BTY%5D=OR&limiterTypes%5BPU%5D=OR&quickSearchTerm=${search}&searchEndCount=665&limiterFieldValues%5BAC%5D=y&_limiterFieldValues%5BAC%5D=on&standAloneLimiters=LI&_limiterFieldValues%5BLI%5D=on&actionCmd=&stw.option=withinResults&prodId=EAIM&userGroupName=phevsu&searchType=AdvancedSearchForm&searchId=&tabID=${filter || "T002"}&topicId=&inPS=true&sort=&searchResultsType=SingleTab&currentPosition=&valueExpressionSize=2&nwf=y&qt=OQE%7E${search}%7E%7ERB%7E366+5&lm=`, {	
 		credentials: 'same-origin',
 		headers: {
@@ -49,6 +73,7 @@ const sampleSearch = async (search, filter) => {
 		const cheerioResult = $('li.citation-view');
 		let res = [];
 		for (let i = 0; i < cheerioResult.length; i++) {
+			//USE CHEERIO TO SCRAPE SEARCH RESULTS FROM WEBSITE
 			const root = cheerioResult[i], context = 'div.article-information';
 			res.push({
 				id: $(root).data('id').slice(5),
@@ -60,6 +85,7 @@ const sampleSearch = async (search, filter) => {
 				wordCount: $('div.snippetWrapper>span.citation-wordcount', context, root).text(),
 				docType: $('div.snippetWrapper>span.citation-docInfoType', context, root).text().trim(),
 				snippet: $('div.snippetWrapper>span.citation-snippet', context, root).text(),
+				provider: "GA",
 			});
 		}
 		return res;
@@ -77,6 +103,8 @@ const viewArticle = async(id) => {
 		}
 	}).then(async(data) => {
 		const dataRes = await data.text().then(res => res);
+		
+		//USE CHEERIO TO SCRAPE DOCUMENT/ARTICLE INFO
 		const $ = cheerio.load(dataRes);
 		const infoRoot = $('section#documentDisplay'), infoContext = 'section#docSummary'; 
 		return {
@@ -91,46 +119,33 @@ const viewArticle = async(id) => {
 	})
 }
 
+nextApp.prepare().then(() => {
+	
+	app.get('/api/search', async (req, res) => {
+		const {query, filter, provider} = req.query;
+		const results = await galeSearch(query, filter);
+		if (results) console.log('search finished! length: ', results.length);
+		
+		res.json({
+			query,
+			filter: filter==="undefined" ?"Journals" :filter,
+			results,
+			provider: provider==="undefined" ?"Gale" :provider,
+		});
+	});
 
-app.get('/search', async (req, res) => {
-	const {search, filter} = req.query;
-	const result = await sampleSearch(search, filter);
-	let results = "";
-	if (result) console.log('search finished! length: ', result.length);
-	/*for (let i = 0; i < result.length; i++) {
-		const {id, title, authors, publication, volNumber, pubDate, wordCount, docType, snippet} = result[i];
-		results += `<div> 
-			<div><span><span><h4>Title: </h4></span><span> ${title} </span></span></div>
-			<div><span><h4>Authors: </h4> ${authors}</span></div>
-			<div><span><h4>Publication: </h4> ${publication}</span></div>
-			<div><span><h4>Volume no.: </h4> ${volNumber}</span></div>
-			<div><span><h4>Publication date: </h4> ${pubDate}</span></div>
-			<div><span><h4>Word count: </h4> ${wordCount}</span></div>
-			<div><span><h4>Snippet: </h4> ${snippet}</span></div>
-			<a href="/view/gale/${id}"> VIEW DOCUMENT </a>
-		</div><hr />`;
-	}
-	res.send("<h1> Results: </h1>"+results);*/
-	res.json(result);
+	app.get('/api/view/:id', async (req, res) => {
+		const {id} = req.params;
+		console.log("Provider used: ", id.slice(0, 2));
+		const article = await viewArticle(id.slice(2));
+		console.log("Document fetched!");
+		res.json(article);
+	});
+	
+	app.get('*', (req, res) => {
+		return handler(req, res);
+	});
+	
+	app.listen(app.get('port'), () => console.log('ELib is running on PORT:'+app.get('port')));
 });
 
-app.get('/view/gale/:id', async (req, res) => {
-	const {id} = req.params;
-	const article = await viewArticle(id);
-	console.log("Document fetched!");
-	//const {title, authors, pubDate, publication, publisher, content, copyright} = article;
-	/*res.send(`<div>
-		<h1> Article </h1>
-		<div><h3> Title: </h3> ${title} </div>
-		<div><h3> Authors: </h3> ${authors} </div>
-		<div><h3> Publication Date: </h3> ${pubDate} </div>
-		<div><h3> Publication: </h3> ${publication} </div>
-		<div><h3> Publisher: </h3> ${publisher} </div>
-		<div><h3> Content: </h3> ${content} </div>
-		<div><h3> Copyright: </h3> ${copyright} </div>
-	</div>`);*/
-	res.json({...article, content: ""});
-});
-
-
-app.listen(app.get('port'), () => console.log('running on port'+app.get('port')));

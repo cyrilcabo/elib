@@ -4,7 +4,9 @@
   "description": "Online library system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "next start"
   },
   "keywords": [
     "Library",
@@ -17,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^4.9.14",
+    "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.14",
     "cheerio": "^1.0.0-rc.3",
     "cookie": "^0.4.1",
@@ -24,10 +27,12 @@
     "express": "^4.17.1",
     "form-data": "^3.0.0",
     "isomorphic-unfetch": "^3.0.0",
+    "jspdf": "^1.5.3",
     "next": "^9.4.0",
     "next-redux-wrapper": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-material-ui-carousel": "^1.4.5",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-promise-middleware": "^6.1.2",
