@@ -7,7 +7,7 @@ import fetch from 'isomorphic-unfetch';
 // .hidden
 // http://192.168.43.179:3000
 
-const host = 'http://localhost:3000';
+const host = 'https://evsulib.herokuapp.com';
 
 export function hello () {
 	return {
