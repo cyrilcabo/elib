@@ -6,7 +6,6 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 //Components
 import Layout from '../components/layout';
 import Search from '../components/Search/search';
-import AboutHeader from '../components/About/header';
 
 //Material Components
 import Grid from '@material-ui/core/Grid';

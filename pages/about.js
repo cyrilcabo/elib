@@ -8,7 +8,6 @@ import Avatar from '@material-ui/core/Avatar';
 
 //Custom components
 import Layout from '../components/layout';
-import AboutHeader from '../components/About/header';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyle = makeStyles(theme => ({
