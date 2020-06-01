@@ -68,12 +68,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-#helper utilities in development
-helper.js
-samplemw.js
-sample.js
-next.config.js
-
 # dotenv environment variables file
 .env
 .env.test
