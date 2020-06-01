@@ -32,7 +32,7 @@ const Results = (props) => {
 				?<List style={{height: '100%', width: '100'}}>
 					{results}
 				</List>
-				:<Grid container item xs={12} justify="center" alignItems="center" style={{height: '100%'}}>
+				:<Grid item xs={12} container justify="center" alignItems="center" style={{minHeight: 300}}>
 					<Typography style={{color: props.searched ?"#f50057" :"white", textAlign: 'center'}} variant="h5"> 
 						{props.searched
 							?"Sorry, no items are available."

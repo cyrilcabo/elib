@@ -28,7 +28,7 @@ const useStyle = makeStyles({
 		
 	},
 	header: {
-		height: 300,
+		minHeight: 350,
 		backgroundColor: 'black',
 	},
 	carouselRoot: {
@@ -48,11 +48,10 @@ const useStyle = makeStyles({
 		height: '60%',
 		color: 'white',
 		fontSize: '2em',
-		border: '5px solid white',
+		border: '5px solid #b99712',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		opacity: '0.6',
 	}
 });
 
@@ -83,7 +82,7 @@ const Library = (props) => {
 				/>
 	});
 	
-	const carousel = ["Search", "Learn", "More"].map((item, index) => {
+	const carousel = ["Search", "Explore", "Learn"].map((item, index) => {
 		return (
 			<Grid key={index} item xs={12} style={{height: '100%'}} container justify="center" alignItems="center">
 				<div className={classes.innerHeader}>
@@ -96,7 +95,7 @@ const Library = (props) => {
 	return (
 		<Layout noPadding>
 			<Grid item xs={12} className={classes.header} container alignItems="center" justify="center">
-				<Carousel className={classes.carouselRoot} timeout={1500}>
+				<Carousel className={classes.carouselRoot} timeout={500}>
 					{carousel}
 				</Carousel>
 			</Grid>
@@ -104,7 +103,7 @@ const Library = (props) => {
 				<Search submitSearch={props.submitSearch} query={props.search.query} />
 				<Grid item xs={12} container justify="space-around" direction="row-reverse" spacing={1} style={{marginTop: 10}}>
 					<Grid item xs={12} md={4}>
-						<Paper>
+						<Paper style={{position: 'sticky'}}>
 							<SearchDetails resultsFrom={resultsFrom ?[resultsFrom] :[]} resultsFor={resultsFor ?[resultsFor] :[]} />
 						</Paper>
 					</Grid>

@@ -12,22 +12,24 @@ import {useState, Fragment} from 'react';
 import NavDrawer from './navdrawer';
 import MenuIcon from '@material-ui/icons/Menu';
 
+//Import images
+import NavbarLogo from '../../public/logo/navbar.png';
+
 const useStyle = makeStyles( theme => ({
 	appbar: {
-		backgroundColor: "black",
+		backgroundColor: "#320505",
 		[theme.breakpoints.down("xs")]: {
 			height: 65,
 		},
 	},
 	linkContainer:{
-		[theme.breakpoints.up("md")]: {
-			marginLeft: 10,
-			marginRight: 10,
-		}
+		cursor: 'pointer',
+		marginLeft: 10,
+		marginRight: 10,
 	},
 	links: {
 		color: "white",
-		fontSize: 14,
+		fontSize: 17,
 		margin: 0,
 	},
 	navbar: {
@@ -51,17 +53,17 @@ const NavBar = () => {
 	const navs = [{name: "Home", link: "/"}, {name: "Library", link: "/library"}, {name: "About", link: "/about"}];
 	const navLinks = navs.map((item, index) => {
 		return <Link href={item.link} key={index}>
-					<Button className={classes.linkContainer} >
-						<Typography variant="h5" component="h6" className={classes.links}>
+					<div className={classes.linkContainer} >
+						<p className={classes.links}>
 							{item.name}
-						</Typography>
-					</Button>
+						</p>
+					</div>
 				</Link>
 	});
 	const drawerToggle = () => toggleDrawer((toggle) ?false :true);
 	return (
 		<Fragment>
-			<AppBar position="absolute" color="secondary" className={classes.appbar}>
+			<AppBar position="absolute" className={classes.appbar}>
 				<Container>
 						<Toolbar className={classes.navbar}>
 							<Hidden smUp>
@@ -69,10 +71,13 @@ const NavBar = () => {
 									<MenuIcon style={{color: "white"}} />
 								</IconButton>
 							</Hidden>
+							<Hidden smDown>
+								<IconButton edge="start"> <img src={NavbarLogo} /> </IconButton>
+							</Hidden>
 							<NavDrawer nav={navs} toggle={toggle} toggleDrawer={drawerToggle}/>
-							<Typography variant="h5" component="h6" className={classes.title} >
+							<h2 className={classes.title} >
 								E-Library
-							</Typography>
+							</h2>
 							<Hidden xsDown>
 								{navLinks}
 							</Hidden>

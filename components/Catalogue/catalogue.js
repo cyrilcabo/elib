@@ -37,22 +37,22 @@ const Catalogue = (props) => {
 		<Card className={classes.root}>
 			<Grid item xs={12} container justify="center" >
 				<Grid item xs={12}>
-					<Typography variant="h4" style={{fontSize: '1.5em', textAlign: 'justify'}}> {title} </Typography>
+					<Typography variant="h4" style={{fontSize: '1.5em', textAlign: 'justify'}}> <b> {title} </b> </Typography>
 				</Grid>
 				<Grid item container xs={12} sm={6} direction="column" alignItems="flex-start" justify="flex-start">
-					<Typography> {authors} </Typography>
-					<Typography> {publication} </Typography>
-					<Typography> Words: {wordCount} </Typography>
+					<Typography> <i> {authors} </i> </Typography>
+					<Typography style={{color: '#b99712'}}> {publication} </Typography>
+					<Typography style={{color: '#631d1d'}}> Words: {wordCount} </Typography>
 				</Grid>
 				<Grid item container xs={12} sm={6} direction="column" justify="center" className={classes.pubInfo}>
-					<Typography> {volNumber} </Typography>
+					<Typography> <b>{volNumber}</b> </Typography>
 					<Typography> {pubDate} </Typography>
 					{docType ?<Typography> <span className={classes.docType}> {docType} </span> </Typography> :""}
 					{src ?<Typography> <span className={classes.src}> {src} </span> </Typography> :""}
 				</Grid>
 				<Divider style={{width: '100%', margin: '5px 0px 5px 0px'}} />
 				<Grid item xs={12} style={{textAlign: 'justify'}}>
-					<Typography variant="p"> {snippet} </Typography>
+					<Typography variant="subtitle1"> {snippet} </Typography>
 				</Grid>
 				<Grid item xs={10} md={8}>
 					<Button 

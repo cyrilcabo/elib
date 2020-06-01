@@ -1,10 +1,14 @@
 import App from 'next/app';
 import wrapper from '../redux/reducers/reducers';
 
+import ScrollToTop from '../utils/scrolltotop';
+
 
 const ELib = ({Component, pageProps, custom}) => {
 	return (
-		<Component {...pageProps} />
+		<ScrollToTop>
+			<Component {...pageProps} />
+		</ScrollToTop>
 	);
 }
 
