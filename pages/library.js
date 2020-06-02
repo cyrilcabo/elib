@@ -63,6 +63,7 @@ const Library = (props) => {
 	//SEARCH STATES FOR UI
 	const articles = search.results;
 	const searched = search.searched;
+	const searchErr = search.err;
 	const searching = search.searching;
 	const resultsFor = search.filter;
 	const resultsFrom = search.provider;
@@ -112,7 +113,7 @@ const Library = (props) => {
 							?<LinearProgress />
 							:""
 						}
-						<Results results={results} searched={searched} searching={searching} />
+						<Results results={results} searched={searched} searching={searching} searchErr={searchErr}/>
 					</Grid>
 				</Grid>
 			</Grid>

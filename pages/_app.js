@@ -3,6 +3,7 @@ import wrapper from '../redux/reducers/reducers';
 
 import ScrollToTop from '../utils/scrolltotop';
 
+import {Provider} from 'react-redux';
 
 const ELib = ({Component, pageProps, custom}) => {
 	return (

@@ -4,18 +4,28 @@ import store from '../store';
 
 import {createWrapper} from 'next-redux-wrapper';
 
+
 const searchReducer = (state = store.search, action) => {
 	switch (action.type) {
 		case "SEARCH_PENDING":
 			return {
 				...state,
+				err: false,
 				searching: true,
+			}
+		case "SEARCH_REJECTED":
+			return {
+				...state,
+				searching: false,
+				searched: true,
+				err: true,
 			}
 		case "SEARCH_FULFILLED":
 			return {
 				...state,
 				searching: false,
 				searched: true,
+				err: false,
 				filter: action.payload.filter,
 				provider: action.payload.provider,
 				results: action.payload.results,
@@ -49,8 +59,8 @@ const reducers = combineReducers({
 });
 
 
-const makeStore = (state=store) => {
-	return createStore(reducers, store, applyMiddleware(promise));
+const makeStore = (context, state=store) => {
+	return createStore(reducers, state, applyMiddleware(promise));
 }
 
 const wrapper =  createWrapper(makeStore);

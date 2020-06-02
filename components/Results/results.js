@@ -35,7 +35,9 @@ const Results = (props) => {
 				:<Grid item xs={12} container justify="center" alignItems="center" style={{minHeight: 300}}>
 					<Typography style={{color: props.searched ?"#f50057" :"white", textAlign: 'center'}} variant="h5"> 
 						{props.searched
-							?"Sorry, no items are available."
+							?props.searchErr
+								?"Something went wrong, please try again."
+								:"Sorry, no items are available."
 							:props.searching
 								?<CircularProgress />
 								:"Search now over millions of articles, books, etc.!"

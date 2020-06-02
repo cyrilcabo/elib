@@ -7,7 +7,13 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-			<meta name="viewport" content="width=device-width, user-scalable=no" />
+          <meta name="viewport" content="width=device-width, user-scalable=no" />
+          <meta 
+            name="description" 
+            content="ELib is a website aimed to provide students of Eastern Visayas State University easy access
+                    over millions of resources with just a few clicks."
+          />
+          <link rel="icon" href="/logo/favicon.ico" />
         </Head>
         <body>
           <Main />

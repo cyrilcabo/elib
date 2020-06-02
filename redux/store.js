@@ -6,6 +6,7 @@ const store = {
 		results: [],
 		searching: false,
 		searched: false,
+		err: false,
 	},
 	currentDocument: {
 		title: "",

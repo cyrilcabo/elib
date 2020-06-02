@@ -19,7 +19,8 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyle = makeStyles({
 	root: {
-		textAlign: 'center'
+		textAlign: 'center',
+		marginBottom: 50,
 	},
 	withPadding: {
 		padding: "10px 0px 10px 0px",
@@ -47,7 +48,7 @@ const ViewDocument = (props) => {
 	const classes = useStyle();
 	const contentContainer = useRef(null);
 	
-	const {title, authors, pubDate, publication, publisher, content, copyright} = props.currentDocument;
+	const {title, authors, pubDate, publication, publisher, content, copyright} = props.currentDocument.title ?props.currentDocument :props.alternativeDocument;
 	
 	useEffect(() => {
 		const contentEl = contentContainer.current;
@@ -103,6 +104,7 @@ const ViewDocument = (props) => {
 ViewDocument.getInitialProps = async ({store, req, query}) => {
 	const id = query.id;
 	await store.dispatch(viewDocument(id));
+	return {alternativeDocument: store.getState().currentDocument}
 }
 
 export default connect(state => ({currentDocument: state.currentDocument}))(ViewDocument);
