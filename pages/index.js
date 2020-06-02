@@ -43,15 +43,11 @@ const useStyle = makeStyles(theme => ({
 	},
 	bannerImage: {
 		width: '100%',
-		[theme.breakpoints.down('md')]: {
-			height: '100%',
-		},
 		[theme.breakpoints.down('sm')]: {
 			width: 350,
 		},
 		[theme.breakpoints.down('xs')]: {
 			width: 250,
-			height: 200
 		}
 	},
 	bannerButton: {
