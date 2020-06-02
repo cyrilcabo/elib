@@ -19,8 +19,8 @@ const connect = async () => {
 	const formdata = new FormData()
 
 	//GALE AUTH DETAILS
-	formdata.append('userGroupName', 'phevsu');
-	formdata.append('password', 'wonderful');
+	formdata.append('userGroupName', process.env.GALE_NAME);
+	formdata.append('password', process.env.GALE_PASS);
 	formdata.append('prodId', 'EAIM');
 	
 	return await fetch('https://galeapps.gale.com/apps/auth', {method: 'POST', body: formdata}).then((data) => {
