@@ -141,9 +141,7 @@ const Index = (props) => {
 				<Grid item xs={12}>
 					<svg 
 					 	xmlns="http://www.w3.org/2000/svg"
-					 	width="100%" 
-					 	height="100%"
-					 	preserveAspectRatio="slice"
+					 	viewBox="0 0 1300 150"
 					 	style={{
 					 		marginBottom: -20,
 					 	}}
