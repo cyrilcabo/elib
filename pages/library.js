@@ -23,7 +23,7 @@ import {connect} from 'react-redux';
 //Redux actions
 import {submitSearch} from '../redux/actions/actions';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
 	root: {
 		
 	},
@@ -52,8 +52,16 @@ const useStyle = makeStyles({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	searchOptions: {
+		position: 'sticky',
+		top: 0,
+		alignSelf: 'flex-start',
+		[theme.breakpoints.down('sm')]: {
+			position: 'relative',
+		}
 	}
-});
+}));
 
 const Library = (props) => {
 	const classes = useStyle();
@@ -100,11 +108,11 @@ const Library = (props) => {
 					{carousel}
 				</Carousel>
 			</Grid>
-			<Grid item container style={{paddingTop: 20}} xs={12} md={10} id="results" justify="center">
+			<Grid item container style={{paddingTop: 20, position: 'relative'}} xs={12} md={10} id="results" justify="center">
 				<Search submitSearch={props.submitSearch} query={props.search.query} />
 				<Grid item xs={12} container justify="space-around" direction="row-reverse" spacing={1} style={{marginTop: 10}}>
-					<Grid item xs={12} md={4}>
-						<Paper style={{position: 'sticky'}}>
+					<Grid item xs={12} md={4} className={classes.searchOptions}>
+						<Paper>
 							<SearchDetails resultsFrom={resultsFrom ?[resultsFrom] :[]} resultsFor={resultsFor ?[resultsFor] :[]} />
 						</Paper>
 					</Grid>
