@@ -63,6 +63,7 @@ const useStyle = makeStyles(theme => ({
 		backgroundColor: '#6d2020',
 		paddingBottom: 70,
 		borderBottom: '10px solid #b99712',
+		color: '#f1f1f1',
 	},
 	"@keyframes wiggle": {
 		"33%": {
