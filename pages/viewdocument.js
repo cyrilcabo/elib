@@ -54,7 +54,10 @@ const ViewDocument = (props) => {
 		const contentEl = contentContainer.current;
 		contentEl.innerHTML = content;
 		for (let i = 0; i < contentEl.children.length; i++) {
-			if (contentEl.children[i].querySelector("span.imageGroup")) contentEl.children[i].style.textAlign = "center";
+			if (contentEl.children[i].querySelector("span.imageGroup")) {
+				contentEl.children[i].style.textAlign = "center";
+				contentEl.children[i].children[0].children[0].style.width = "100%";
+			}
 		}
 	}, [content]);
 	
@@ -83,7 +86,7 @@ const ViewDocument = (props) => {
 							</Grid>
 						</Grid>
 						<Divider style={{width: '90%'}} />
-						<Grid item style={{padding: 20}}>
+						<Grid item style={{padding: 20, width: '100%'}}>
 							<div ref={contentContainer} className={classes.content}> </div>
 						</Grid>
 						<Divider style={{width: '90%'}} />
