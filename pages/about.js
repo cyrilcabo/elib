@@ -30,7 +30,7 @@ const useStyle = makeStyles(theme => ({
 	bannerTitleInfo: {
 		margin: 0,
 		fontSize: '1.5rem',
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('xs')]: {
 			marginTop: 50,
 			fontSize: '1.3rem',
 		}
@@ -106,15 +106,18 @@ const useStyle = makeStyles(theme => ({
 		color: '#ecd67f', 
 		margin: 0,
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.5rem',
+			fontSize: '2rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.7rem',
 		}
 	},
 	MandVinfo: {
 		fontSize: '1.5rem', 
 		color: '#f0e9e9', 
 		textAlign: 'center',
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '1rem',
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.2rem',
 		}
 	},
 	teamContainer: {
@@ -144,7 +147,7 @@ const useStyle = makeStyles(theme => ({
 		margin: 0,
 		marginBottom: 30,
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '2.5rem',
+			fontSize: '3rem',
 		}
 	},
 	infoQuote: {
