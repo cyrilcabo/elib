@@ -54,10 +54,8 @@ const ViewDocument = (props) => {
 		const contentEl = contentContainer.current;
 		contentEl.innerHTML = content;
 		for (let i = 0; i < contentEl.children.length; i++) {
-			if (contentEl.children[i].querySelector("span.imageGroup")) {
-				contentEl.children[i].style.textAlign = "center";
-				contentEl.children[i].children[0].children[0].style.width = "100%";
-			}
+			if (contentEl.children[i].querySelector("span.imageGroup")) contentEl.children[i].style.textAlign = "center";
+			if (contentEl.children[i].querySelector("img")) contentEl.children[i].style.maxWidth = "100%";
 		}
 	}, [content]);
 	
