@@ -144,7 +144,7 @@ const useStyle = makeStyles(theme => ({
 		margin: 0,
 		marginBottom: 30,
 		[theme.breakpoints.down('sm')]: {
-			'2rem',
+			fontSize: '2rem',
 		}
 	},
 	infoQuote: {
