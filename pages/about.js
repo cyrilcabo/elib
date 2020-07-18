@@ -32,7 +32,7 @@ const useStyle = makeStyles(theme => ({
 		fontSize: '1.5rem',
 		[theme.breakpoints.down('sm')]: {
 			marginTop: 50,
-			fontSize: '1.1rem',
+			fontSize: '1.3rem',
 		}
 	},
 	bigCircle: {
@@ -144,14 +144,14 @@ const useStyle = makeStyles(theme => ({
 		margin: 0,
 		marginBottom: 30,
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '2rem',
+			fontSize: '2.5rem',
 		}
 	},
 	infoQuote: {
 		margin: '100px 0px 0px 0px', 
 		fontSize: '2.5rem',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1rem'
+			fontSize: '1.5rem'
 		}
 	}	
 }));
