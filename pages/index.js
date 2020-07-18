@@ -96,6 +96,21 @@ const useStyle = makeStyles(theme => ({
 			fontSize: '2em',
 		},
 	},
+	rootTitle: {
+		fontSize: '4rem', 
+		margin: 0,
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '2.5rem',
+		},
+	},
+	headerDescription: {
+		fontSize: '1.3rem', 
+		margin: 0, 
+		textAlign: 'justify',
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.1rem',
+		},
+	},
 }));
 
 const Index = (props) => {
@@ -115,13 +130,13 @@ const Index = (props) => {
 					</Grid>
 					<Grid item xs={12} md={7} container spacing={2} className={classes.bannerText}>
 						<div>
-							<p style={{fontSize: '4rem', margin: 0}}> Welcome to E-Lib </p>
+							<p className={classes.rootTitle}> Welcome to E-Lib </p>
 						</div>
 						<div>
 							<Divider style={{width: '100%', height: 10, backgroundColor: '#e5ce73'}} />
 						</div>
 						<div>
-							<p style={{fontSize: '1.3rem', margin: 0, textAlign: 'justify'}} className={classes.headerTitle}>
+							<p className={classes.headerDescription}>
 								E-Lib is an online platform designed to provide easy access to information for students. Due to the pandemic,
 								it was realized that better systems are to be created, in order to cater the needs of the students. Therefore,
 								it was imperative to utilize technologies available, so that the students are not left behind.
