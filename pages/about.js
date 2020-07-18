@@ -29,8 +29,10 @@ const useStyle = makeStyles(theme => ({
 	},
 	bannerTitleInfo: {
 		margin: 0,
+		fontSize: '1.5rem',
 		[theme.breakpoints.down('sm')]: {
 			marginTop: 50,
+			fontSize: '1.1rem',
 		}
 	},
 	bigCircle: {
@@ -102,12 +104,18 @@ const useStyle = makeStyles(theme => ({
 	MandVtitle: {
 		fontSize: '2.5rem', 
 		color: '#ecd67f', 
-		margin: 0
+		margin: 0,
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.5rem',
+		}
 	},
 	MandVinfo: {
 		fontSize: '1.5rem', 
 		color: '#f0e9e9', 
-		textAlign: 'center'
+		textAlign: 'center',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1rem',
+		}
 	},
 	teamContainer: {
 		marginTop: 80,
@@ -130,7 +138,22 @@ const useStyle = makeStyles(theme => ({
 			alignItems: 'center',
 			justifyContent: 'center',
 		}
-	}
+	},
+	rootTitle: {
+		fontSize: '5rem', 
+		margin: 0,
+		marginBottom: 30,
+		[theme.breakpoints.down('sm')]: {
+			'2rem',
+		}
+	},
+	infoQuote: {
+		margin: '100px 0px 0px 0px', 
+		fontSize: '2.5rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1rem'
+		}
+	}	
 }));
 
 const About = () => {
@@ -144,8 +167,8 @@ const About = () => {
 						<div className={[classes.bigCircle, classes.bannerTitleBigCircle].join(' ')} />
 						<div className={[classes.smallCircle, classes.bannerTitleSmallCircle].join(' ')} />
 						<Grid item xs={11} md={8} className={classes.bannerText}>
-							<p style={{fontSize: '5rem', margin: 0}}> What is Elib? </p>
-							<p style={{fontSize: '1.5rem'}} className={classes.bannerTitleInfo}>
+							<p className={classes.rootTitle}> What is Elib? </p>
+							<p className={classes.bannerTitleInfo}>
 								ELib is a web application aimed to provide students of Eastern Visayas State University easy access
 								over millions of resources with just a few clicks. It serves as an online library, closing the gaps
 								between students and information.
@@ -193,7 +216,7 @@ const About = () => {
 						<div className={[classes.smallCircle, classes.teamSmallCircle].join(' ')} />
 						<Grid item xs={11} md={10} container className={[classes.teamContainer, classes.endToCenter].join(' ')}>
 							<Grid item>
-								<p style={{fontSize: '5rem', margin: 0}}> Who we are </p>
+								<p className={classes.rootTitle}> Who we are </p>
 							</Grid>
 							<Grid item container className={classes.memberContainer} alignItems="center" spacing={2}>
 								<Grid item style={{height: 80, width: 80, borderRadius: '100%', backgroundColor: 'black'}} >
@@ -216,7 +239,7 @@ const About = () => {
 								</p>
 							</Grid>
 							<Grid item >
-								<p style={{margin: '100px 0px 0px 0px', fontSize: '2.5em'}}>
+								<p className={classes.infoQuote}>
 									<i> "Service is our passion" </i>
 								</p>
 							</Grid>
