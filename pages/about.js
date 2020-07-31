@@ -1,256 +1,239 @@
 //Material Components
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
-import Avatar from '@material-ui/core/Avatar';
 
 //Custom components
 import Layout from '../components/layout';
+
+import React from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyle = makeStyles(theme => ({
-	root: {
-		minHeight: 500,
-	},
-	banner: {
-		minHeight: 500,
-		[theme.breakpoints.down('xs')]: {
-			marginBottom: 100,
-		}
-	},
-	bannerText: {
-		marginTop: 50,
-		textAlign: 'justify',
-		[theme.breakpoints.down('sm')]: {
-			textAlign: 'center',
-		}
-	},
-	bannerTitleInfo: {
-		margin: 0,
-		fontSize: '1.5rem',
-		[theme.breakpoints.down('xs')]: {
-			marginTop: 50,
-			fontSize: '1.3rem',
-		}
-	},
-	bigCircle: {
-		borderRadius: '100%', 
-		top: "10%",
-		height: "90%",
-		width: 350, 
-		position: 'absolute',
-		zIndex: -2,
-		[theme.breakpoints.down('xs')]: {
-			height: '60%',
-			width: 250
-		}
-	},
-	smallCircle: {
-		borderRadius: '100%', 
-		height: "55%",
-		width: 200, 
-		position: 'absolute',
-		top: '50%',
-		zIndex: -1,
-		[theme.breakpoints.down('xs')]: {
-			height: '35%',
-			width: 150
-		}
-	},
-	bannerTitleBigCircle: {
-		backgroundColor: '#edc2c2',
-		right: '10%',
-		[theme.breakpoints.down('sm')]: {
-			top: '1%',
-			right: '1%'
-		}
-	},
-	bannerTitleSmallCircle: {
-		right: "20%",
-		backgroundColor: '#f8eab3',
-		[theme.breakpoints.down('sm')]: {
-			top: '100%',
-			left: '2%'
-		}
-	},
-	teamBigCircle: {
-		backgroundColor: '#f8eab3',
-		left: '10%',
-		top: '30%',
-		[theme.breakpoints.down('sm')]: {
-			top: '1%',
-			left: '1%'
-		}
-	},
-	teamSmallCircle: {
-		left: "20%",
-		top: '70%',
-		backgroundColor: '#edc2c2',
-		[theme.breakpoints.down('sm')]: {
-			left: '80%',
-			top: '85%',
-		}
-	},
-	MandVcontainer: {
-		padding: 0,
-		minHeight: 450,
-		backgroundColor: 'black',
-		[theme.breakpoints.down('sm')]: {
-			paddingBottom: 50,
-		}
-	},
-	MandVtitle: {
-		fontSize: '2.5rem', 
-		color: '#ecd67f', 
-		margin: 0,
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '2rem',
-		},
-		[theme.breakpoints.down('xs')]: {
-			fontSize: '1.7rem',
-		}
-	},
-	MandVinfo: {
-		fontSize: '1.5rem', 
-		color: '#f0e9e9', 
+	header: {
+		minHeight: 423,
+		backgroundColor: '#000000',
 		textAlign: 'center',
-		[theme.breakpoints.down('xs')]: {
-			fontSize: '1.2rem',
+	},
+	MVcontainer: {
+		minHeight: 403,
+		textAlign: 'center',
+		[theme.breakpoints.down('sm')]: {
+			padding: '50px 0px 0px 0px',
 		}
 	},
-	teamContainer: {
-		marginTop: 80,
-		flexDirection: 'column',
-	},
-	endToCenter: {
-		alignItems: 'flex-end',
-		textAlign: 'right',
+	MVinnerContainer: {
+		justifyContent: 'space-between',
 		[theme.breakpoints.down('sm')]: {
-			alignItems: 'center',
-			textAlign: 'center'
-		}
-	},
-	memberContainer: {
-		flexDirection: 'row-reverse',
-		justifyContent: 'flex-start',
-		margin: '10px 0px 10px 0px',
-		[theme.breakpoints.down('sm')]: {
-			flexDirection: 'column',
-			alignItems: 'center',
 			justifyContent: 'center',
 		}
 	},
-	rootTitle: {
-		fontSize: '5rem', 
-		margin: 0,
-		marginBottom: 30,
+	WHOcontainer: {
+		minHeight: 641,
+		backgroundColor: '#f3f3f3',
+		textAlign: 'center',
+		marginBottom: 50,
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '3rem',
+			padding: '50px 0px 50px 0px'
 		}
 	},
-	infoQuote: {
-		margin: '100px 0px 0px 0px', 
-		fontSize: '2.5rem',
+	headerTitle: {
+		fontSize: '4.5rem',
+		color: '#ffee00',
+		margin: '0px 0px 30px 0px',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.5rem'
+			fontSize: '3rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '2rem',
 		}
-	}	
+	},
+	headerSubTitle: {
+		fontSize: '1.2rem',
+		color: 'white',
+		margin: '0px 0px 0px 0px',
+		lineHeight: '30px',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1rem',
+		}
+	},
+	MVtitle: {
+		color: '#320505',
+		fontSize: '1.8rem',
+		margin: '0px 0px 25px 0px',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.5rem',
+			marginBottom: 10,
+		}
+	},
+	MVcontent: {
+		color: 'black',
+		fontSize: '1rem',
+		lineHeight: '30px',
+		margin: 0,
+		[theme.breakpoints.down('sm')]: {
+			marginBottom: 30,
+		}
+	},
+	WHOtitle: {
+		fontSize: '3.2rem',
+		color: '#320505',
+		margin: '0px 0px 70px 0px',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '2.2rem',
+			marginBottom: 60,
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '2rem',
+		}
+	},
+	memberContainer: {
+		'& > div.MuiGrid-item': {
+			marginBottom: 15,
+		},
+		[theme.breakpoints.down('sm')]: {
+			marginBottom: 50,
+		}
+	},
+	memberIDcontainer: {
+		'& > div.MuiGrid-item': {
+			marginBottom: 2,
+		}
+	},
+	memberImg: {
+		[theme.breakpoints.down('sm')]: {
+			height: 120,
+		},
+		[theme.breakpoints.down('xs')]: {
+			height: 100,
+		}
+	},
+	memberDivider: {
+		height: 2,
+		width: '70%',
+		backgroundColor: '#b99820',
+		[theme.breakpoints.down('sm')]: {
+			width: '40%',
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '70%',
+		}
+	},
+	memberTitle: {
+		fontSize: '1.2rem',
+		margin: 0,
+	},
+	memberPos: {
+		fontSize: '1rem',
+		margin: 0,
+	},
+	memberDetails: {
+		fontSize: '1rem',
+		margin: 0,
+		lineHeight: '25px',
+	},
 }));
 
 const About = () => {
 	const classes = useStyle();
-	
+	const team = [
+		{
+			img: "officelady.png",
+			name: "Yolanda C. Cabo",
+			pos: "Campus Librarian",
+			details: "Oversees the whole library operation and management of EVSU-TC library.",
+		},
+		{
+			img: "officeman1.png",
+			name: "Cyril Cabo",
+			pos: "Web Developer",
+			details: "Develops and manages the production and operation of the E-Lib website.",
+		},
+		{
+			img: "officeman2.png",
+			name: "Some Guy",
+			pos: "Placeholder",
+			details: "This random guy is needed to balance the layout. Two is just not good enough."
+		}
+	];
+	const members = team.map((item, index) => {
+		return <Grid item key={index} xs={12} md={3} container direction="column" alignItems="center" className={classes.memberContainer}>
+			<Grid item>
+				<img src={`/Team/${item.img}`} className={classes.memberImg} />
+			</Grid>
+			<Grid item container direction="column" alignItems="center" className={classes.memberIDcontainer}>
+				<Grid item>
+					<h3 className={classes.memberTitle}> {item.name} </h3>
+				</Grid>
+				<Grid item container justify="center">
+					<Divider className={classes.memberDivider} />
+				</Grid>
+				<Grid item>
+					<p className={classes.memberPos}> {item.pos} </p>
+				</Grid>
+			</Grid>
+			<Grid item>
+				<p className={classes.memberDetails}> {item.details} </p>
+			</Grid>
+		</Grid>
+	});
 	return (
-		<Layout noPadding>
-			<Grid item xs={12} container justify="center" style={{overflowX: 'hidden'}}>
-				<Grid item xs={12} container justify="center" className={classes.banner}>
-					<Grid item xs={12} container justify="center" style={{height: '80%', position: 'relative'}}>
-						<div className={[classes.bigCircle, classes.bannerTitleBigCircle].join(' ')} />
-						<div className={[classes.smallCircle, classes.bannerTitleSmallCircle].join(' ')} />
-						<Grid item xs={11} md={8} className={classes.bannerText}>
-							<p className={classes.rootTitle}> What is Elib? </p>
-							<p className={classes.bannerTitleInfo}>
+		<React.Fragment>
+			<Layout style={{padding: 0}}>
+				<Grid item xs={12} container alignItems="center" justify="center" className={classes.header}>
+					<Grid item xs={11} md={8} container direction="column" justify="center" alignItems="center">
+						<Grid item>
+							<h1 className={classes.headerTitle}> E-LIBRARY </h1>
+						</Grid>
+						<Grid item>
+							<p className={classes.headerSubTitle}> 
 								ELib is a web application aimed to provide students of Eastern Visayas State University easy access
 								over millions of resources with just a few clicks. It serves as an online library, closing the gaps
 								between students and information.
 							</p>
 						</Grid>
-					</Grid> 
-				</Grid>
-				<Grid item xs={12} className={classes.MandVcontainer} container alignItems="center" direction="column">
-					<Grid item container justify="center">
-						<svg 
-							 xmlns="http://www.w3.org/2000/svg"
-							 width="52px" 
-							 height="0.608in"
-						 >
-							<path 
-								fillRule="evenodd"  
-								fill="rgb(240, 233, 233)"
-								d="M51.012,0.074 L0.002,0.012 L25.470,51.003 L51.012,0.074 Z"/>
-						</svg>
 					</Grid>
-					<Grid item container justify="center">
-						<Grid item xs={11} container justify="space-around" spacing={3}>
-							<Grid item xs={12} md={5} container justify="center">
-								<p className={classes.MandVtitle}> MISSION </p>
-								<p className={classes.MandVinfo}>
+				</Grid>
+				<Grid item xs={12} container alignItems="center" justify="center" className={classes.MVcontainer}>
+					<Grid item xs={11} md={8} container className={classes.MVinnerContainer} alignItems="center">
+						<Grid item xs={12} md={5} container direction="column" alignItems="center">
+							<Grid item>
+								<h3 className={classes.MVtitle}> MISSION </h3>
+							</Grid>
+							<Grid item>
+								<p className={classes.MVcontent}> 
 									ELib will utilize modern technologies to overcome traditional systems have faced. ELib will work hard to supply high modern demands of knowledge and information.
 								</p>
-								<Divider style={{width: '80%', height: 12, backgroundColor: '#c88484', marginBottom: 10}} />
-								<Divider style={{width: '40%', height: 12, backgroundColor: '#ecd67f'}} />
 							</Grid>
-							<Grid item xs={12} md={5} container justify="center">
-								<p className={classes.MandVtitle}> VISION </p>
-								<p className={classes.MandVinfo}>
+						</Grid>
+						<Grid item xs={12} md={5} container direction="column" alignItems="center">
+							<Grid item>
+								<h3 className={classes.MVtitle}> VISION </h3>
+							</Grid>
+							<Grid item>
+								<p className={classes.MVcontent}> 
 									ELib aims to close the gap between students and valuable information; ELib will serve what was inaccesible knowledge to any student who may need them.
 								</p>
-								<Divider style={{width: '80%', height: 12, backgroundColor: '#c88484', marginBottom: 10}} />
-								<Divider style={{width: '40%', height: 12, backgroundColor: '#ecd67f'}} />
 							</Grid>
 						</Grid>
 					</Grid>
 				</Grid>
-				<Grid container item xs={12} justify="center" style={{minHeight: 500, marginBottom: 80}}>
-					<Grid item xs={12} container justify="center" style={{height: '80%', position: 'relative',}}>
-						<div className={[classes.bigCircle, classes.teamBigCircle].join(' ')} />
-						<div className={[classes.smallCircle, classes.teamSmallCircle].join(' ')} />
-						<Grid item xs={11} md={10} container className={[classes.teamContainer, classes.endToCenter].join(' ')}>
-							<Grid item>
-								<p className={classes.rootTitle}> Who we are </p>
-							</Grid>
-							<Grid item container className={classes.memberContainer} alignItems="center" spacing={2}>
-								<Grid item style={{height: 80, width: 80, borderRadius: '100%', backgroundColor: 'black'}} >
-								</Grid>
-								<Grid item>
-									<Grid item>
-										<p style={{margin: 0, fontSize: '1.5rem'}}> Yolanda C. Cabo </p>
-									</Grid>
-									<Grid item>
-										<p style={{margin: 0, fontSize: '1.1rem'}}> Campus Librarian </p>
-									</Grid>
-									<Grid item>
-										<Divider style={{height: 5, width: 250, backgroundColor: '#b99712'}} />
-									</Grid>
-								</Grid>
-							</Grid>
-							<Grid item>
-								<p style={{margin: 0, fontSize: '1.1rem'}}>
-									Oversees the whole library operation and management of EVSU-TC library
-								</p>
-							</Grid>
-							<Grid item >
-								<p className={classes.infoQuote}>
-									<i> "Service is our passion" </i>
-								</p>
-							</Grid>
+				<Grid item xs={12} container alignItems="center" justify="center" className={classes.WHOcontainer}>
+					<Grid item container xs={11} md={10} direction="column" justify="center" alignItems="center">
+						<Grid item>
+							<h2 className={classes.WHOtitle}> WHO WE ARE </h2>
 						</Grid>
-					</Grid> 
+						<Grid item container container justify="space-around">
+							{members}
+						</Grid>
+					</Grid>
 				</Grid>
-			</Grid>
-		</Layout>
+			</Layout>
+			<style jsx global>{`
+				body {
+					background-color: white;
+				}
+			`}</style>
+		</React.Fragment>
 	);
 }
 

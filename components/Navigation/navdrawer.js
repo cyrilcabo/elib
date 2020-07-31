@@ -89,7 +89,7 @@ const NavDrawer = (props) => {
 						<h6 className={classes.title}> E-Lib </h6>
 					</Grid>
 				</ListSubheader>
-				<Divider component="li" style={{backgroundColor: 'black', height: 2}}/>
+				<Divider component="li" style={{backgroundColor: '#b89720', height: 2}}/>
 				<div className={classes.fullList}>
 					<List>
 						{navDrawer}

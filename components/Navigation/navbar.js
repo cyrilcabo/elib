@@ -64,7 +64,7 @@ const NavBar = () => {
 	return (
 		<Fragment>
 			<AppBar position="absolute" className={classes.appbar}>
-				<Container>
+				<Container style={{display: 'flex', justifyContent: 'center'}}>
 						<Toolbar className={classes.navbar}>
 							<Hidden smUp>
 								<IconButton edge="start" onClick={drawerToggle} >

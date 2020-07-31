@@ -37,7 +37,7 @@ const Layout = (props) => {
 			</Head>
 			<ThemeProvider theme={theme}>
 				<Navbar />
-				<Grid item xs={12} container justify="center" className={props.noPadding ?classes.noPadding :classes.root}>
+				<Grid item xs={12} container justify="center" className={props.noPadding ?classes.noPadding :classes.root} style={props.style}>
 					{props.children}
 					<Footer />
 				</Grid>
