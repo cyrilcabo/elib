@@ -11,11 +11,24 @@ const useStyle = makeStyles(theme => ({
 	root: {
 		width: '100%',
 		padding: 5,
+		boxShadow: '0px 0px 3px gray',
+	},
+	container: {
+		[theme.breakpoints.down('xs')]: {
+			'& > div.MuiGrid-item': {
+				justifyContent: 'center',
+				alignItems: 'center',
+				textAlign: 'center',
+			}
+		}
 	},
 	docType: {
 		backgroundColor: 'black',
 		padding: 2,
 		color: 'white',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.9rem',
+		}
 	},
 	pubInfo: {
 		alignItems: 'flex-end',
@@ -28,6 +41,61 @@ const useStyle = makeStyles(theme => ({
 		padding: 2,
 		color: 'black',
 	},
+	title: {
+		fontSize: '1.3em', 
+		textAlign: 'justify',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.2rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.1rem',
+			textAlign: 'center'
+		}
+	},
+	author: {
+		fontSize: '0.95rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.85rem',
+		}
+	},
+	publication: {
+		fontSize: '1rem',
+		color: '#b99712',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.95rem',
+		}
+	},
+	words: {
+		fontSize: '0.9rem',
+		color: '#631d1d'
+	},
+	vol: {
+		fontSize: '1rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.95rem',
+		}
+	},
+	pubDate: {
+		fontSize: '0.95rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.9rem',
+		}
+
+	},
+	snippet: {
+		textAlign: 'justify',
+		fontSize: '0.95rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.9rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			textAlign: 'center',
+		}
+	},
+	btn: {
+		margin: '10px 0 5px 0',
+		backgroundColor: '#320505'
+	}
 }));
 
 const Catalogue = (props) => {
@@ -35,28 +103,28 @@ const Catalogue = (props) => {
 	const {title, authors, docType, wordCount, snippet, volNumber, pubDate, publication, src} = props;
 	return (
 		<Card className={classes.root}>
-			<Grid item xs={12} container justify="center" >
+			<Grid item xs={12} container justify="center" className={classes.container} >
 				<Grid item xs={12}>
-					<Typography variant="h4" style={{fontSize: '1.5em', textAlign: 'justify'}}> <b> {title} </b> </Typography>
+					<Typography variant="h4" className={classes.title}> <b> {title} </b> </Typography>
 				</Grid>
 				<Grid item container xs={12} sm={6} direction="column" alignItems="flex-start" justify="flex-start">
-					<Typography> <i> {authors} </i> </Typography>
-					<Typography style={{color: '#b99712'}}> {publication} </Typography>
-					<Typography style={{color: '#631d1d'}}> Words: {wordCount} </Typography>
+					<Typography className={classes.author}> <i> {authors} </i> </Typography>
+					<Typography className={classes.publication}> {publication} </Typography>
+					<Typography className={classes.words}> Words: {wordCount} </Typography>
 				</Grid>
 				<Grid item container xs={12} sm={6} direction="column" justify="center" className={classes.pubInfo}>
-					<Typography> <b>{volNumber}</b> </Typography>
-					<Typography> {pubDate} </Typography>
+					<Typography className={classes.vol}> <b>{volNumber}</b> </Typography>
+					<Typography className={classes.pubDate}> {pubDate} </Typography>
 					{docType ?<Typography> <span className={classes.docType}> {docType} </span> </Typography> :""}
 					{src ?<Typography> <span className={classes.src}> {src} </span> </Typography> :""}
 				</Grid>
 				<Divider style={{width: '100%', margin: '5px 0px 5px 0px'}} />
-				<Grid item xs={12} style={{textAlign: 'justify'}}>
-					<Typography variant="subtitle1"> {snippet} </Typography>
+				<Grid item xs={12}>
+					<Typography  variant="subtitle1" className={classes.snippet} > {snippet} </Typography>
 				</Grid>
-				<Grid item xs={10} md={8}>
+				<Grid item xs={10} sm={8} md={6} lg={4}>
 					<Button 
-						style={{margin: '10px 0 5px 0'}}
+						className={classes.btn}
 						fullWidth 
 						variant="contained" 
 						color="secondary"

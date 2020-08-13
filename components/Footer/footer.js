@@ -30,7 +30,8 @@ const useStyle = makeStyles(theme => ({
 	evsuInfo: {
 		flexDirection: 'row',
 		[theme.breakpoints.down('sm')]: {
-			flexDirection: 'column'
+			flexDirection: 'column',
+			fontSize: '0.95rem',
 		}
 	},
 	address: {

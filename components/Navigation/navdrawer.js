@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 	root: {
 		zIndex: 1000,
 		"& > div.MuiPaper-root": {
-			backgroundColor: '#320505',
+			backgroundColor: '#1f0808',
 			color: 'white',
 		}
 	},
@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 		fontFamily: "DejaVu, Serif",
 	},
 	listHeader: {
-		margin: "10px 0px 5px 0px",
+		margin: "20px 0px 5px 0px",
 		textAlign: "center",
 	},
 	logo: {
@@ -50,6 +50,7 @@ const useStyles = makeStyles({
 		margin: 0,
 		fontSize: 25,
 		fontFamily: "DejaVu, Serif",
+		fontSize: '1.4rem',
 	},
 	icons: {
 		fill: 'white',
@@ -57,6 +58,9 @@ const useStyles = makeStyles({
 	listItem: {
 		"&:hover": {
 			backgroundColor: 'gray',
+		},
+		'& p': {
+			fontSize: '1rem',
 		}
 	}
 });
@@ -66,18 +70,18 @@ const NavDrawer = (props) => {
 	const icons = [<HomeIcon className={classes.icons} />, <InfoIcon className={classes.icons} />, <AnnouncementIcon className={classes.icons} />];
 	const navDrawer = props.nav.map((link, index) => {
 		return (
-		<div key={index} className={classes.listItem}>
-			<Link href={link.link} >
-				<ListItem button>
-					<ListItemIcon> {icons[index]} </ListItemIcon>
-					<ListItemText primary={
-							<p className={classes.links}>
-								{link.name}
-							</p>
-					} />
-				</ListItem>
-			</Link>
-		</div>
+		<Link href={link.link} key={index}>
+			<div className={classes.listItem}>
+					<ListItem button>
+						<ListItemIcon> {icons[index]} </ListItemIcon>
+						<ListItemText primary={
+								<p className={classes.links}>
+									{link.name}
+								</p>
+						} />
+					</ListItem>
+			</div>
+		</Link>
 		);
 	});
 	return (		

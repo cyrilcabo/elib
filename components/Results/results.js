@@ -8,26 +8,31 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
 	root: {
 		height: '100%',
 		width: '100%',
 		minHeight: 300,
-		backgroundColor: 'black',
+		backgroundColor: '#ded1d1',
 	},
-});
+	item: {
+		[theme.breakpoints.down('xs')]: {
+			padding: '12px 5px'
+		}
+	}
+}));
 
 const Results = (props) => {
 	const classes = useStyle();
-	const results = props.results.map(item => {
+	const results = props.results.map((item, key) => {
 		return (
-			<ListItem>
+			<ListItem key={key} className={classes.item}>
 				{item}
 			</ListItem>
 		);
 	})
 	return (
-		<Paper className={classes.root} square>
+		<Paper className={classes.root} style={{backgroundColor: props.results.length ?"" :"black"}} square elevation={2}>
 			{props.results.length
 				?<List style={{height: '100%', width: '100'}}>
 					{results}

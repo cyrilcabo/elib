@@ -17,13 +17,13 @@ import {viewDocument}  from '../redux/actions/actions';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
 	root: {
 		textAlign: 'center',
 		marginBottom: 50,
 	},
 	withPadding: {
-		padding: "10px 0px 10px 0px",
+		padding: "10px",
 	},
 	paper: {
 		marginTop: 20,
@@ -41,8 +41,53 @@ const useStyle = makeStyles({
 		flexDirection: 'column',
 		alignItems: 'center',
 		textAlign: 'justify',
+	},
+	title: {
+		fontSize: '2rem',
+		fontWeight: 550,
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.8rem',
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.5rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.3rem',
+		}
+	},
+	author: {
+		fontSize: '1.1rem',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.05rem',
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '0.95rem',
+		}
+	},
+	details: {
+		'& h6': {
+			fontSize: '1.2rem',
+			[theme.breakpoints.down('md')]: {
+				fontSize: '1.1rem',
+			},
+			[theme.breakpoints.down('sm')]: {
+				fontSize: '1rem',
+			},
+		},
+		'& p': {
+			fontSize: '1rem',
+			[theme.breakpoints.down('md')]: {
+				fontSize: '0.95rem',
+			},
+			[theme.breakpoints.down('sm')]: {
+				fontSize: '0.9rem',
+			}
+		}
 	}
-});
+}));
 
 const ViewDocument = (props) => {
 	const classes = useStyle();
@@ -67,11 +112,11 @@ const ViewDocument = (props) => {
 				<Grid item xs={12} md={10}>
 					<Paper className={classes.paper}>
 						<Grid item container direction="column" alignItems="center" className={classes.withPadding}>
-							<Typography variant="h4"> {title} </Typography>
-							<Typography variant="h6"> {authors} </Typography>
+							<Typography variant="h4" className={classes.title}> {title} </Typography>
+							<Typography variant="h6" className={classes.author}> {authors} </Typography>
 						</Grid>
 						<Divider style={{width: '90%'}} />
-						<Grid item container justify="space-around" className={classes.withPadding}>
+						<Grid item container justify="space-around" className={[classes.withPadding, classes.details].join(' ')}>
 							<Grid item xs={12} md={4} container alignItems="center" direction="column">
 								<Typography variant="h6"><b> Publication date </b></Typography>
 								<Typography> {pubDate} </Typography>

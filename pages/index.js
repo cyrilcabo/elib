@@ -27,34 +27,50 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyle = makeStyles(theme => ({
 	topBanner: {
+		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
 			textAlign: 'center'
 		},
 		marginBottom: 50,
 	},
 	bannerText: {
+		[theme.breakpoints.down('sm')]: {
+			justifyContent: 'center',
+		},
 		"& > div": {
 			width: '100%',
-			marginBottom: 10,
+			marginBottom: 15,
 			[theme.breakpoints.down('sm')]: {
 				marginBottom: 20,
+				display: 'flex',
+				justifyContent: 'center',
+				maxWidth: '80%',
+			},
+			[theme.breakpoints.down('xs')]: {
+				maxWidth: '95%',
 			}
 		}
 	},
 	bannerImage: {
-		width: '100%',
+		width: '90%',
+		[theme.breakpoints.down('md')]: {
+			width: '100%',
+		},
 		[theme.breakpoints.down('sm')]: {
-			width: 350,
+			width: 280,
 		},
 		[theme.breakpoints.down('xs')]: {
-			width: 250,
+			width: 200,
 		}
 	},
 	bannerButton: {
-		fontSize: '1.2rem',
-		width: '60%',
+		fontSize: '1.1rem',
+		padding: '5px 50px',
 		[theme.breakpoints.down('sm')]: {
-			width: '80%'
+			fontSize: '1rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			padding: '5px 40px',
 		}
 	},
 	searchPanel: {
@@ -77,7 +93,7 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	icons: {
-		width: '50%',
+		width: 80,
 		height: '100%',
 		fill: '#f0e9e9',
 		[theme.breakpoints.up('md')]: {
@@ -86,31 +102,95 @@ const useStyle = makeStyles(theme => ({
 				animationDirection: 'forwards',
 			},
 		},
-		[theme.breakpoints.down('xs')]: {
-			width: '20%',
+		[theme.breakpoints.down('md')]: {
+			width: 70,
 		},
+		[theme.breakpoints.down('sm')]: {
+			width: 60,
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: 50,
+		}
 	},
 	iconText: {
-		fontSize: '1.5em',
-		[theme.breakpoints.up('md')]: {
-			fontSize: '2em',
+		fontSize: '1.5rem',
+		fontWeight: 550,
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.3rem',
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.2rem',
 		},
 	},
 	rootTitle: {
 		fontSize: '4rem', 
 		margin: 0,
-		[theme.breakpoints.down('xs')]: {
+		[theme.breakpoints.down('md')]: {
+			fontSize: '3rem',
+		},
+		[theme.breakpoints.down('sm')]: {
 			fontSize: '2.5rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '2rem',
 		},
 	},
 	headerDescription: {
-		fontSize: '1.3rem', 
+		fontSize: '1.2rem',
+		letterSpacing: '1px',
+		lineHeight: '30px', 
 		margin: 0, 
 		textAlign: 'justify',
-		[theme.breakpoints.down('xs')]: {
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.05rem',
+			lineHeight: '28px'
+		},
+		[theme.breakpoints.down('sm')]: {
+			textAlign: 'center',
 			fontSize: '1.1rem',
+			lineHeight: '30px',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1rem',
 		},
 	},
+	divider: {
+		width: '100%', 
+		height: 10, 
+		backgroundColor: '#e5ce73',
+		[theme.breakpoints.down('md')]: {
+			height: 5,
+		},
+		[theme.breakpoints.down('sm')]: {
+			width: '70%',
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '90%',
+		}
+	},
+	perks: {
+		'& p': {
+			margin: '10px 0px 30px 0px',
+			fontSize: '0.95rem',
+			[theme.breakpoints.down('md')]: {
+				marginTop: 5,
+				foontSize: '0.9rem',
+			},
+		},
+		[theme.breakpoints.down('xs')]: {
+			maxWidth: '60%',
+		}
+	},
+	slogan: {
+		marginTop: 20,
+		'& p': {
+			fontSize: '1rem',
+			margin: '5px 0px',
+			[theme.breakpoints.down('sm')]: {
+				fontSize: '0.95rem',
+			}
+		}
+	}
 }));
 
 const Index = (props) => {
@@ -125,24 +205,24 @@ const Index = (props) => {
 		<Layout noPadding>
 			<Grid item xs={12} container justify="center" style={{marginTop: 50}}>
 				<Grid item xs={12} md={10} container justify="center" spacing={5} className={classes.topBanner}>
-					<Grid item xs={12} md={5}>
+					<Grid item xs={12} md={5} className={'image-container'}>
 						<img src={BannerLogo} className={classes.bannerImage}/>
 					</Grid>
-					<Grid item xs={12} md={7} container spacing={2} className={classes.bannerText}>
-						<div>
-							<p className={classes.rootTitle}> Welcome to E-Lib </p>
-						</div>
-						<div>
-							<Divider style={{width: '100%', height: 10, backgroundColor: '#e5ce73'}} />
-						</div>
-						<div>
+					<Grid item xs={12} md={7} container className={classes.bannerText}>
+						<Grid item>
+							<p className={classes.rootTitle}> Welcome to <span style={{color: '#b99820'}}>E-Lib</span> </p>
+						</Grid>
+						<Grid item>
+							<Divider className={classes.divider} />
+						</Grid>
+						<Grid item>
 							<p className={classes.headerDescription}>
 								E-Lib is an online platform designed to provide easy access to information for students. Due to the pandemic,
 								it was realized that better systems are to be created, in order to cater the needs of the students. Therefore,
 								it was imperative to utilize technologies available, so that the students are not left behind.
 							</p>
-						</div>
-						<div>
+						</Grid>
+						<Grid item>
 							<Grid item xs={12} container justify="center">
 								<Button 
 									color="secondary" 
@@ -151,7 +231,7 @@ const Index = (props) => {
 									onClick={() => Router.push('/about')}
 								> Learn More </Button>
 							</Grid>
-						</div>
+						</Grid>
 					</Grid>
 				</Grid>
 				<Grid item xs={12}>
@@ -169,7 +249,7 @@ const Index = (props) => {
 					</svg>
 				</Grid>
 				<Grid xs={12} container item justify="center" className={classes.searchPanel}>
-					<Grid item xs={12} md={10} justify="space-around" container>
+					<Grid item xs={12} md={10} justify="space-around" container className={classes.perks}>
 						<Grid item xs={12} sm={3} container justify="center" direction="column">
 							<Grid item container justify="center">
 								<WebIcon className={classes.icons} />
@@ -194,7 +274,7 @@ const Index = (props) => {
 					</Grid>
 					<Grid item container xs={11} md={10} justify="center">
 						<Search submitSearch={submitSearch} query={""} />
-						<div>
+						<div className={classes.slogan}>
 							<p> Search for journal articles, books, magazines, news, and many more from millions of resources.</p>
 							<p> Take advantage of this free vantage! </p>
 						</div>
