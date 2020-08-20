@@ -124,7 +124,7 @@ const useStyle = makeStyles(theme => ({
 	},
 	rootTitle: {
 		fontSize: '4rem', 
-		fontFamily: 'cursive',
+		fontFamily: 'fancy',
 		margin: 0,
 		[theme.breakpoints.down('md')]: {
 			fontSize: '3rem',
