@@ -42,6 +42,10 @@ const Layout = (props) => {
 					<Footer />
 				</Grid>
 				<style jsx global>{`
+					@font-face {
+						font-family: fancy;
+						src: url(/fonts/courgette.ttf);
+					}
 					body {
 						background-color: #f0e9e9;
 						margin: 0;
