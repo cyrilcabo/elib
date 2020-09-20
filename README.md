@@ -3,7 +3,7 @@
 E-Lib is an online platform designed to provide easy access to information for students. Due to the pandemic, it was realized that better systems are to be created, in order to cater the needs of the students. Therefore, it was imperative to utilize technologies available, so that the students are not left behind.
 
 ### Demo
-E-Lib is live at: https://bookmate.herokuapp.com . Check it out, and don't forget to follow me for more projects like this.
+E-Lib is live at: https://evsulib.herokuapp.com . Check it out, and don't forget to follow me for more projects like this.
 
 ## Technologies
 E-Lib is currently built with the following technologies:
