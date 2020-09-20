@@ -13,6 +13,7 @@ E-Lib is currently built with the following technologies:
 * NextJS
 * ReduxJS
 * Material-UI
+* Puppeteer
 
 ## Setup
 You can clone the repository to your local machine. Be sure that you have NodeJS installed. You can then run `npm install`, and after installing dependencies, run `npm build`. Finally, you can run `npm start`, and check your application running at `http://localhost:3000`.
