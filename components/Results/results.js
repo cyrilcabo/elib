@@ -42,7 +42,7 @@ const Results = (props) => {
 						{props.searched
 							?props.searchErr
 								?"Something went wrong, please try again."
-								:"Sorry, no items are available."
+								:"Sorry, no items are available or our Gale subscription has expired."
 							:props.searching
 								?<CircularProgress />
 								:"Search now over millions of articles, books, etc.!"
