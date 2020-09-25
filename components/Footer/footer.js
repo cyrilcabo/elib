@@ -21,6 +21,14 @@ const useStyle = makeStyles(theme => ({
 		marginTop: 20,
 		color: '#f0e9e9'
 	},
+	footerContainer: {
+		'& > div.MuiGridItem': {
+			margin: '12px 0px',
+			[theme.breakpoints.down('sm')]: {
+				margin: '10px 0px',
+			}
+		}
+	},
 	logoHolder: {
 		justifyContent: 'flex-end',
 		[theme.breakpoints.down('sm')]: {
@@ -73,7 +81,7 @@ const Footer = () => {
 	const classes = useStyle();
 	return (
 		<div className={classes.root}>
-			<Grid item container xs={12} justify="center" style={{marginTop: 50}}>
+			<Grid item container xs={12} justify="center" style={{marginTop: 50}} className={classes.footerContainer}>
 				<Grid item container xs={12} md={8} justify="center" spacing={2}>
 					<Grid item xs={12} md={6} container justify="flex-start" alignItems="center" spacing={2} className={classes.evsuInfo}>
 						<Grid item className={classes.logoHolder}>
