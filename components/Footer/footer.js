@@ -73,7 +73,7 @@ const Footer = () => {
 	const classes = useStyle();
 	return (
 		<div className={classes.root}>
-			<Grid item container xs={12} justify="center" style={{marginTop: 50}} spacing={4}>
+			<Grid item container xs={12} justify="center" style={{marginTop: 50}}>
 				<Grid item container xs={12} md={8} justify="center" spacing={2}>
 					<Grid item xs={12} md={6} container justify="flex-start" alignItems="center" spacing={2} className={classes.evsuInfo}>
 						<Grid item className={classes.logoHolder}>
