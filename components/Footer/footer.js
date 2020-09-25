@@ -18,7 +18,7 @@ const useStyle = makeStyles(theme => ({
 		width: '100%',
 		paddingBottom: 20,
 		backgroundColor: '#080808',
-		marginTop: 20,
+		marginTop: 80,
 		color: '#f0e9e9'
 	},
 	footerContainer: {
