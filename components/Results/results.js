@@ -19,6 +19,15 @@ const useStyle = makeStyles(theme => ({
 		[theme.breakpoints.down('xs')]: {
 			padding: '12px 5px'
 		}
+	},
+	message: {
+		textAlign: 'center',
+		fontSize: '1.2rem',
+		margin: '0px 5px 0px 5px',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1rem',
+			margin: '0px 10px 0px 10px',
+		}
 	}
 }));
 
@@ -38,7 +47,7 @@ const Results = (props) => {
 					{results}
 				</List>
 				:<Grid item xs={12} container justify="center" alignItems="center" style={{minHeight: 300}}>
-					<Typography style={{color: props.searched ?"#f50057" :"white", textAlign: 'center'}} variant="h5"> 
+					<Typography style={{color: props.searched ?"#f50057" :"white"}} className={classes.message} variant="h5"> 
 						{props.searched
 							?props.searchErr
 								?"Something went wrong, please try again."
