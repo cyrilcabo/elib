@@ -22,7 +22,7 @@ const useStyle = makeStyles(theme => ({
 		color: '#f0e9e9'
 	},
 	footerContainer: {
-		'& > div.MuiGridItem': {
+		'& > div.MuiGrid-item': {
 			margin: '12px 0px',
 			[theme.breakpoints.down('sm')]: {
 				margin: '10px 0px',
